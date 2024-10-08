@@ -86,6 +86,30 @@ mod:
     sub r0, r0, r4         @ residuo = número - r4
     bx lr                  @ Regresar
 
+--------------------------------------------------
+                    SECCION CODIGO
+--------------------------------------------------
+.section .data
+prompt:        @ Mensaje para solicitar un número
+prime_msg:    @ Mensaje si el número es primo
+not_prime_msg: @ Mensaje si no es primo
+buffer:       @ Espacio para el número ingresado
+
+.section .text
+.globl _start
+_start:        @ Punto de entrada del programa
+
+@ Registros utilizados
+r0:           @ Registro para cargar el número y mensajes
+r1:           @ Registro para el divisor en la función es_primo
+r2:           @ Registro para el cuadrado del divisor y el número
+r3:           @ Registro para el resultado de la división en mod
+r4:           @ Registro para almacenar el producto en mod
+
+@ Variables adicionales
+i:            @ Contador para el bucle (si se utiliza)
+
+
    ```
 ##  2 Encontrar todos los números primos menores que 100.
 
@@ -160,6 +184,14 @@ mod:
     mul r4, r3, r1      @ r4 = r3 * divisor
     sub r0, r0, r4      @ residuo = número - r4
     bx lr               @ Regresar
+
+--------------------------------------------------
+                    SECCION CODIGO
+--------------------------------------------------
+
+.section .data
+msg: .asciz "Los números primos menores que 100 son:\n"  @ Mensaje para imprimir los números primos
+
    ```
 ##  3 Calcular el máximo común divisor (MCD) de dos números utilizando el algoritmo de Euclides.
 
@@ -214,6 +246,15 @@ gcd:
 
 gcd_return:
     bx lr                @ Regresar
+
+--------------------------------------------------
+                    SECCION CODIGO
+--------------------------------------------------
+.section .data
+prompt1: .asciz "Ingrese el primer número: "  @ Mensaje para el primer número
+prompt2: .asciz "Ingrese el segundo número: "  @ Mensaje para el segundo número
+result_msg: .asciz "El MCD es: %d\n"  @ Mensaje para imprimir el resultado del MCD
+buffer: .space 4  @ Espacio para almacenar el número ingresado
 
 
    ```
