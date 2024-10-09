@@ -314,6 +314,27 @@ gcd:
 gcd_return:
     bx lr                @ Regresar
 
+--------------------------------------------------
+                    SECCION CODIGO
+--------------------------------------------------
+.section .data
+prompt:       @ Mensaje para solicitar el primer número
+prompt2:      @ Mensaje para solicitar el segundo número
+lcm_msg:      @ Mensaje de salida con el MCM
+
+.section .text
+.globl _start
+_start:        @ Punto de entrada del programa
+
+@ Registros utilizados
+r0:           @ Registro para cargar mensajes y direcciones
+r1:           @ Registro para el primer número
+r2:           @ Registro para el segundo número
+r3:           @ Registro para el resultado de (r1 * r2) y almacenar el MCD temporalmente
+
+@ Variables adicionales
+gcd_result:   @ Variable que almacena el resultado del MCD
+
    ```
 ##  5 Escribir un programa que genere los primeros 100 números primos.
   
@@ -391,6 +412,27 @@ mod:
     sub r0, r0, r4      @ residuo = número - r4
     bx lr               @ Regresar
 
+--------------------------------------------------
+                    SECCION CODIGO
+--------------------------------------------------
+.section .data
+primo_msg:    @ Mensaje que indica que un número es primo
+
+.section .text
+.globl _start
+_start:        @ Punto de entrada del programa
+
+@ Registros utilizados
+r0:           @ Registro para el número actual a evaluar
+r1:           @ Registro para cargar el mensaje de primo
+r2:           @ Registro para el cuadrado del divisor
+r3:           @ Registro para almacenar el resultado de la división en la función mod
+r4:           @ Contador de números primos encontrados
+
+@ Variables adicionales
+is_prime:     @ Variable que indica si el número es primo o no (0 o 1)
+
+
    ```
 ##  6 Encontrar los factores primos de un número dado.
    
@@ -457,6 +499,27 @@ div:
     udiv r1, r3, r2      @ r1 = número / factor
     bx lr                @ Regresar
 
+--------------------------------------------------
+                    SECCION CODIGO
+--------------------------------------------------
+.section .data
+prompt:       @ Mensaje para solicitar un número
+factor_msg:   @ Mensaje que indica que un número es un factor primo
+
+.section .text
+.globl _start
+_start:        @ Punto de entrada del programa
+
+@ Registros utilizados
+r0:           @ Registro para cargar mensajes y el número ingresado
+r1:           @ Registro para el número ingresado y almacenar el resultado de la división
+r2:           @ Registro para el divisor actual
+r3:           @ Registro para almacenar el número durante la división
+r4:           @ Registro para almacenar el resultado de la multiplicación en mod
+
+@ Variables adicionales
+is_factor:    @ Variable que indica si el número actual es un factor primo
+
    ```
 ##  7 Calcular la suma de los divisores propios de un número dado.
    
@@ -489,6 +552,25 @@ _start:
 
 sum_loop:
     cmp r2, r1           @
+--------------------------------------------------
+                    SECCION CODIGO
+--------------------------------------------------
+.section .data
+prompt:       @ Mensaje para solicitar un número
+sum_msg:      @ Mensaje que indica la suma de los divisores propios
+
+.section .text
+.globl _start
+_start:        @ Punto de entrada del programa
+
+@ Registros utilizados
+r0:           @ Registro para cargar mensajes y el número ingresado
+r1:           @ Registro para el número ingresado
+r2:           @ Registro para el divisor actual
+r3:           @ Registro para almacenar la suma de los divisores
+
+@ Variables adicionales
+sum_result:   @ Variable que almacena el resultado de la suma de divisores
 
    ```
 ##  8 Determinar si un número dado es un número perfecto (la suma de sus divisores propios es igual al número).
@@ -560,6 +642,30 @@ mod:
     sub r0, r0, r4       @ residuo = número - r4
     bx lr                @ Regresar
 
+--------------------------------------------------
+                    SECCION CODIGO
+--------------------------------------------------
+.section .data
+prompt:          @ Mensaje para solicitar un número
+perfect_msg:     @ Mensaje que indica que el número es perfecto
+not_perfect_msg: @ Mensaje que indica que el número no es perfecto
+
+.section .text
+.globl _start
+_start:          @ Punto de entrada del programa
+
+@ Registros utilizados
+r0:              @ Registro para cargar mensajes y el número ingresado
+r1:              @ Registro para el número ingresado
+r2:              @ Registro para el divisor actual
+r3:              @ Registro para almacenar la suma de los divisores
+r4:              @ Registro para almacenar el resultado de la multiplicación en la función mod
+
+@ Variables adicionales
+sum_result:      @ Variable que almacena la suma de divisores
+is_perfect:      @ Variable que indica si el número es perfecto o no
+
+
    ```
 ##  9 Encontrar todos los números perfectos menores que 1000.
    
@@ -628,6 +734,27 @@ mod:
     mul r4, r3, r1       @ r4 = r3 * divisor
     sub r0, r0, r4       @ residuo = número - r4
     bx lr                @ Regresar
+--------------------------------------------------
+                    SECCION CODIGO
+--------------------------------------------------
+.section .data
+perfect_msg:  @ Mensaje que indica que un número es perfecto
+
+.section .text
+.globl _start
+_start:        @ Punto de entrada del programa
+
+@ Registros utilizados
+r0:           @ Registro para cargar mensajes y el número a evaluar
+r1:           @ Registro para el número actual que se está evaluando
+r2:           @ Registro para el divisor actual
+r3:           @ Registro para almacenar la suma de los divisores
+r4:           @ Registro para almacenar el resultado de la multiplicación en la función mod
+
+@ Variables adicionales
+sum_result:   @ Variable que almacena la suma de divisores
+is_perfect:   @ Variable que indica si el número actual es perfecto
+
 
    ```
 ##  10 Escribir un programa que determine si un número es un número de Carmichael.
@@ -678,5 +805,25 @@ print_result:
 es_carmichael:
     @ Implementar la lógica para determinar si r1 es un número de Carmichael
     bx lr                @ Regresar (debe incluir lógica aquí)
+--------------------------------------------------
+                    SECCION CODIGO
+--------------------------------------------------
+.section .data
+prompt:                @ Mensaje para solicitar un número
+carmichael_msg:       @ Mensaje que indica que el número es de Carmichael
+not_carmichael_msg:   @ Mensaje que indica que el número no es de Carmichael
+
+.section .text
+.globl _start
+_start:                @ Punto de entrada del programa
+
+@ Registros utilizados
+r0:                    @ Registro para cargar mensajes y el número ingresado
+r1:                    @ Registro para el número ingresado
+r2:                    @ Registro para otros cálculos (no especificado)
+r3:                    @ Registro para otros cálculos (no especificado)
+
+@ Variables adicionales
+is_carmichael:        @ Variable que indica si el número es de Carmichael
 
    ```
